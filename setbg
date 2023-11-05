@@ -1,0 +1,27 @@
+#! /bin/sh
+
+wal="${HOME}/.local/share/bg"
+waldir="${HOME}/pix/wal"
+
+# clear a current existing caches
+wal -c
+
+if [[ ! -z "$1" ]]; then
+  ln -sf "$(readlink -f "$1")" $wal && notify-send -i "$wal" "changing wallpaper..." 
+else 
+  if [[ ! -f $wal ]]; then
+    ln -sf "$(find $waldir -iregex '.*.\(jpg\|jpeg\|png\|gif\)' -type f | shuf -n 1)" "$wal" && notify-send -i "$wal" "changing wallpaper..."
+  fi
+fi
+
+wal -n -i $wal -o "${HOME}/.config/wal/postrun"
+
+printf "!! Transparency (0-1):
+*.alpha: 1
+
+!! Set a default font and font size as below:
+*.font: JetBrains Mono:size=9\n\n" > ${HOME}/.config/x11/xresources
+cat "${HOME}/.cache/wal/colors.Xresources" >> ${HOME}/.config/x11/xresources
+
+xwallpaper --zoom "$wal"
+xdotool key super+F5
