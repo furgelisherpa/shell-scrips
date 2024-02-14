@@ -1,2 +1,2 @@
-# shell-scrips
-Collection of shell scripts written by me or use.
+# Shell-Scripts
+    Collection of shell scripts which I use in daily basis.

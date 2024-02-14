@@ -1,5 +1,7 @@
 #! /bin/sh
 
+# Author: furgelisherpa
+
 wal="${HOME}/.local/share/bg"
 waldir="${HOME}/pix/wal"
 
