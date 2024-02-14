@@ -1,2 +1,2 @@
 # Shell-Scripts
-Collection of shell scripts which I use in daily basis.
+Collection of shell scripts which I use on adaily basis.
